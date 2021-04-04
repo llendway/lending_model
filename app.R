@@ -62,7 +62,7 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required for the cp_plot
 server <- function(input, output) {
     output$cp_plot <- renderPlot({
         

@@ -32,9 +32,11 @@ lending_mod$train  %>%
                values_to = "value") %>% 
   group_by(variable) %>% 
   summarize(min_val = min(value),
-            max_val = max(value))
+            max_val = max(value),
+            med_val = median(value))
 
 ```
+
 ```{r}
 lending_mod$train  %>% 
   select(!where(is.numeric)) %>% 
