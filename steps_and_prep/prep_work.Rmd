@@ -1,0 +1,70 @@
+---
+title: "Untitled"
+author: "Put your name here"
+date: "3/30/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(DALEX)
+library(DALEXtra)
+```
+
+
+```{r}
+lending_mod$train  %>% 
+  select(where(is.numeric)) %>% 
+  names()
+```
+
+
+```{r}
+lending_mod$train  %>% 
+  select(where(is.numeric)) %>% 
+  pivot_longer(cols = everything(),
+               names_to = "variable", 
+               values_to = "value") %>% 
+  group_by(variable) %>% 
+  summarize(min_val = min(value),
+            max_val = max(value))
+
+```
+```{r}
+lending_mod$train  %>% 
+  select(!where(is.numeric)) %>% 
+  pivot_longer(cols = everything(),
+               names_to = "variable", 
+               values_to = "value") %>% 
+  group_by(variable) %>% 
+  summarize(distinct_val = n_distinct(value))
+```
+
+```{r}
+states <- 
+  lending_mod$train  %>% 
+  select(addr_state) %>% 
+  distinct(addr_state) %>% 
+  arrange(addr_state) %>% 
+  pull(addr_state)
+```
+
+```{r}
+obs <- lending_mod$train %>% slice(1)
+predict(lending_mod, new_data = obs, type = "prob")
+```
+
+
+```{r}
+data("lending_club")
+stack_explain <- explain_tidymodels(lending_mod, 
+                                    data = lending_club %>% select(-Class),
+                                    y = lending_club %>% select(Class))
+```
+
+

@@ -1,0 +1,13 @@
+name: lending_model
+title: lending_model
+username:
+account: lisalendway
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3905524
+bundleId: 4427358
+url: https://lisalendway.shinyapps.io/lending_model/
+when: 1617461050.60638
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: prep_work.Rmd
