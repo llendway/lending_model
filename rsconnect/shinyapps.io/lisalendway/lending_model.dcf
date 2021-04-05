@@ -5,9 +5,9 @@ account: lisalendway
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3905524
-bundleId: 4427358
+bundleId: 4433590
 url: https://lisalendway.shinyapps.io/lending_model/
-when: 1617461050.60638
+when: 1617634105.73653
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: prep_work.Rmd
+ignoredFiles: steps_and_prep
