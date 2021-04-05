@@ -6,6 +6,7 @@
 
 library(shiny)       # for app
 #library(tidyverse)  # all the libs we need are in tidymodels
+library(forcats)     # need for fct_relevel - not in tidymodels
 library(tidymodels)  # for modeling
 library(stacks)      # for stacking
 library(ranger)      # for random forest

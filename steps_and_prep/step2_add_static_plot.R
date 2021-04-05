@@ -10,11 +10,17 @@
 
 library(shiny)       # for app
 #library(tidyverse)  # all the libs we need are in tidymodels
+library(forcats)     # need for fct_relevel - not in tidymodels
 library(tidymodels)  # for modeling
 library(stacks)      # for stacking
 library(ranger)      # for random forest
 library(glmnet)      # for lasso
 library(rpart)       # for decision tree
+
+# Check to see which tidyverse packages are in tidymodels:
+# tibble(package = tidyverse_packages(), 
+#        in_tidymodels = tidyverse_packages() %in% 
+#          tidymodels_packages())
 
 # This time we need this for predicting.
 # And I'm still using the training data from it
