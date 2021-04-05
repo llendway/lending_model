@@ -1,4 +1,5 @@
 # Now we add theming - the fun part!
+# Also added scrollable side panel - convenient!
 
 # Load libraries - add bslib. I also needed to update shiny.
 
@@ -65,17 +66,24 @@ stats_num <-
 # NOTE: I haven't made all the labels look nice - I should.
 
 ui <- fluidPage(
-  theme = bs_theme(primary = "#123B60", secondary = "#D44420", 
-                  base_font = list(font_google("Raleway"), "-apple-system", 
+  theme = bs_theme(primary = "#123B60", 
+                   secondary = "#D44420", 
+                   base_font = list(font_google("Raleway"), "-apple-system", 
                                    "BlinkMacSystemFont", "Segoe UI", "Helvetica Neue", "Arial", 
                                    "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", 
-                                   "Segoe UI Symbol"), bootswatch = "sandstone"),
+                                   "Segoe UI Symbol"), 
+                   bootswatch = "sandstone"),
   # Application title
   titlePanel("Ceteris Perabus Profile"),
   
   # Sidebar with inputs
   sidebarLayout(
     sidebarPanel(
+      # added this for scrollable side panel:
+      tags$head(tags$style(
+        type = 'text/css',
+        'form.well { max-height: 600px; overflow-y: auto; }'
+      )),
       sliderInput(inputId = "acc_now_delinq",
                   label = "Number of accounts delinquent:",
                   min = stats_num %>% 

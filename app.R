@@ -7,6 +7,7 @@ library(stacks)      # for stacking
 library(ranger)      # for random forest
 library(glmnet)      # for lasso
 library(rpart)       # for decision tree
+library(bslib)       # for theming
 
 lending_mod <- readRDS("lending_stack.rds")
 
@@ -57,6 +58,13 @@ stats_num <-
 # NOTE: I haven't made all the labels look nice - I should.
 
 ui <- fluidPage(
+    theme = bs_theme(primary = "#123B60", 
+                     secondary = "#D44420", 
+                     base_font = list(font_google("Raleway"), "-apple-system", 
+                                      "BlinkMacSystemFont", "Segoe UI", "Helvetica Neue", "Arial", 
+                                      "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", 
+                                      "Segoe UI Symbol"), 
+                     bootswatch = "sandstone"),
     
     # Application title
     titlePanel("Ceteris Perabus Profile"),
@@ -64,6 +72,11 @@ ui <- fluidPage(
     # Sidebar with inputs
     sidebarLayout(
         sidebarPanel(
+            # added this for scrollable side panel:
+            tags$head(tags$style(
+                type = 'text/css',
+                'form.well { max-height: 600px; overflow-y: auto; }'
+            )),
             sliderInput(inputId = "acc_now_delinq",
                         label = "Number of accounts delinquent:",
                         min = stats_num %>% 
